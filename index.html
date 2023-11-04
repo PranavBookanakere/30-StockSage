@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Sentiments</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyW8kDYd5FnpECk7g0kKSx0nDSF0s9Z" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-vAfMQB7wziytLtv8T19Dtc6HEVwxsI3yn3KaaVeAUxQ2b4R6u4dA6ZFCMgIktr5+" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #sentimentCard {
+            margin-top: 20px;
+        }
+
+        #sentimentImage {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .positive {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .negative {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mb-4"><i class="fas fa-chart-line"></i> Stock Sentiments</h1>
+
+        <div class="form-group">
+            <label for="stockSelect">Select a stock:</label>
+            <select class="form-control" id="stockSelect">
+                <option value="nestle" data-image="nestle.png">Nestle</option>
+                <option value="tata" data-image="tata.png">Tata</option>
+                <option value="infosys" data-image="infosys.png">Infosys</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="getSentiment()"><i class="fas fa-search"></i> Get Sentiment</button>
+
+        <div class="card mt-3" id="sentimentCard">
+            <!-- Sentiment information will be displayed here -->
+        </div>
+
+        <!-- Display the image here -->
+        <img id="sentimentImage" src="nestle.png" alt="Company Image">
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-Y3F/PmIk9UdAEBpDMxqM7ftaP2uuU5z9aWpYE2S9n/LoR6Ihq4F2QtXn2Ouj0Mp" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyW8kDYd5FnpECk7g0kKSx0nDSF0s9Z" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha384-vAfMQB7wziytLtv8T19Dtc6HEVwxsI3yn3KaaVeAUxQ2b4R6u4dA6ZFCMgIktr5+" crossorigin="anonymous"></script>
+
+    <script>
+        function getSentiment() {
+            // Get the selected option
+            const selectedOption = document.getElementById('stockSelect');
+            const selectedValue = selectedOption.value;
+            
+            // Get the selected option's image URL
+            const selectedImage = selectedOption.options[selectedOption.selectedIndex].getAttribute('data-image');
+
+            // This is a placeholder function. You'll need to implement the actual sentiment analysis logic here.
+            // You may need to call an API or use a library for sentiment analysis.
+            
+            // For demonstration purposes, let's assume the sentiment is positive.
+            const sentiment = 'positive';
+
+            // Display the sentiment and image in the card.
+            displaySentiment(sentiment, selectedImage);
+        }
+
+        function displaySentiment(sentiment, imageUrl) {
+            const card = document.getElementById('sentimentCard');
+            const image = document.getElementById('sentimentImage');
+            card.innerHTML = '';
+
+            const sentimentText = document.createElement('p');
+            sentimentText.textContent = 'Sentiment: ' + sentiment.charAt(0).toUpperCase() + sentiment.slice(1);
+            card.appendChild(sentimentText);
+
+            card.classList.add(sentiment); // Add a class based on sentiment for styling.
+
+            // Set the image source based on sentiment
+            image.src = imageUrl;
+        }
+    </script>
+
+</body>
+</html>
