@@ -19,7 +19,13 @@ const NavBar = () => {
 
   return (
     <nav className="nav-bar">
-      <h1>Chat Room</h1>
+      <ul>
+        <li class="item"><a href="/home">Home</a></li>
+        <li class="item"><a href="/chatbox">Chat Room</a></li>
+        <li class="item"><a href="/dashboard">Dashboard</a></li>
+        <li class="item"><a href="/sentiment">Sentiment Analysis</a></li>
+        
+      </ul>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
           Sign Out

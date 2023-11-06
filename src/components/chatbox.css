@@ -5,14 +5,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: red;
+    background-color: greenyellow;
     color: #242443;
     height: 60px;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 10000;
+  }
+  .nav-bar ul{
+    display:flex;
+  }
+  
+  .nav-bar ul li{
+    list-style: none;
+    margin-right: 400px;
+    font-size: 20px;
+  }
+
+  #nav-bar ul li a{
+    display: block;
   }
   .sign-in {
     border: none;
@@ -122,3 +135,5 @@
     background-color: black;
     font-weight: 600;
   }
+
+ 
